@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import clsx from "clsx";
+import { format } from "date-fns";
 import { Calendar, Ticket } from "lucide-react";
 import {
   selectedMovieAtom,
@@ -14,7 +15,7 @@ import { IMovies } from "@/app/page";
 import { Separator } from "@/components/ui/separator";
 
 const EventDetails = ({ movie }: { movie: IMovies }) => {
-  const [selectedMovie, setSelectedMovie] = useRecoilState(selectedMovieAtom);
+  const [, setSelectedMovie] = useRecoilState(selectedMovieAtom);
   const [ticketQty, setTicketQty] = useRecoilState(ticketQtyAtom);
   const [ticketType, setTicketType] = useRecoilState(ticketTypeAtom);
 
@@ -47,7 +48,9 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
           <p className="text-sm font-medium text-text-secondary">
             Date and Time
           </p>
-          <p className="font-medium">Wed, Dec 6, 2023 11:30 AM</p>
+          <p className="font-medium">
+            {format(new Date(), "MMM dd, yyyy hh:mm aaa")}
+          </p>
         </div>
       </div>
 
