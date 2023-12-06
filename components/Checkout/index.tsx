@@ -1,15 +1,22 @@
 "use client";
-import { useState } from "react";
+
+import { Fragment, useState } from "react";
 import { useRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { ticketQtyAtom, ticketTypeAtom } from "@/atoms/ticket";
+import {
+  ticketDetailsAtom,
+  ticketQtyAtom,
+  ticketTypeAtom,
+} from "@/atoms/ticket";
 import { IMovies } from "@/app/page";
 import { Form } from "@/components/ui/form";
 import formSchema from "./formSchema";
 import CheckoutSummary from "./Summary";
 import CheckoutForm from "./Form";
+import Invoice from "../Invoice";
+import { Separator } from "../ui/separator";
 
 const Checkout = ({ movie }: { movie: IMovies }) => {
   const [ticketType] = useRecoilState(ticketTypeAtom);
@@ -17,6 +24,8 @@ const Checkout = ({ movie }: { movie: IMovies }) => {
   const [pricePerTicket] = useState(
     ticketType == "normal" ? movie.ticketPriceNormal : movie.ticketPriceVip
   );
+  const [, setTicketDetails] = useRecoilState(ticketDetailsAtom);
+  const [showInvoice, setShowInvoice] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,23 +58,39 @@ const Checkout = ({ movie }: { movie: IMovies }) => {
       }
     }
     const data = {
-      movie: { ...values, movie: movie.title },
+      movie: { ...values, ...ticketDetails },
       tickets: ticketQty == 1 ? [ticketDetails] : tickets,
     };
-    console.log(data);
+    //@ts-expect-error
+    setTicketDetails(data);
+    setShowInvoice(true);
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex items-start justify-between gap-8"
-      >
-        <CheckoutForm form={form} />
+    <Fragment>
+      {showInvoice ? (
+        <Invoice />
+      ) : (
+        <Fragment>
+          <div className="flex flex-col gap-6">
+            <p className="text-2xl font-semibold">Order Confirmation</p>
 
-        <CheckoutSummary movie={movie} />
-      </form>
-    </Form>
+            <Separator className="bg-dark-border" />
+          </div>
+
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="flex items-start justify-between gap-8"
+            >
+              <CheckoutForm form={form} />
+
+              <CheckoutSummary movie={movie} />
+            </form>
+          </Form>
+        </Fragment>
+      )}
+    </Fragment>
   );
 };
 

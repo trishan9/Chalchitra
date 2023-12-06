@@ -16,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NavBar />
+
         <RecoilRoot>{children}</RecoilRoot>
       </body>
     </html>

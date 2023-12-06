@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import MovieCard from "@/components/MovieCard";
 import Slider from "@/components/Slider";
 
+const API_URL = process.env.API_URL;
+
 const getMovies = async () => {
-  const response = await fetch(
-    "https://ticket-server-31jc.onrender.com/api/movies"
-  );
+  const response = await fetch(`${API_URL}`);
   const result = await response.json();
   return result;
 };

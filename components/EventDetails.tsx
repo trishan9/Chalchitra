@@ -29,8 +29,6 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
     router.push(`/movies/checkout/${movie._id}`);
   };
 
-  console.log(selectedMovie, ticketQty, ticketType);
-
   return (
     <form
       onSubmit={(e) => handleSubmit(e)}
@@ -70,6 +68,7 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
             className="-ml-1.5 pr-2 bg-background-secondary outline-none"
           >
             <option value="normal">Chalchitra Normal</option>
+
             <option value="vip">Chalchitra VIP</option>
           </select>
         </div>

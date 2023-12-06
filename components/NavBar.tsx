@@ -12,8 +12,11 @@ const NavBar = () => {
 
         <ul className="flex gap-8 font-medium">
           <li className="cursor-pointer">Home</li>
+
           <li className="cursor-pointer">Concerts</li>
+
           <li className="cursor-pointer">Movies</li>
+
           <li className="cursor-pointer">Theater Events</li>
         </ul>
       </div>

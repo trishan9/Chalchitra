@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 //@ts-expect-error
 const CheckoutForm = ({ form }) => {
   return (
-    <div className="w-[65%] p-8 py-10 bg-background-secondary border border-dark-border rounded-md flex gap-8 flex-col">
+    <div className="w-[65%] p-8 py-8 bg-background-secondary border border-dark-border rounded-md flex gap-8 flex-col">
       <p className="text-xl font-semibold">Information</p>
       <FormField
         control={form.control}

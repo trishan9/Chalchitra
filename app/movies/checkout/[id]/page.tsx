@@ -1,11 +1,10 @@
 import { Metadata } from "next";
 import CheckoutForm from "@/components/Checkout";
-import { Separator } from "@/components/ui/separator";
+
+const API_URL = process.env.API_URL;
 
 const getMovie = async (id: string) => {
-  const response = await fetch(
-    `https://ticket-server-31jc.onrender.com/api/movies/${id}`
-  );
+  const response = await fetch(`${API_URL}/${id}`);
   const result = await response.json();
   return result;
 };
@@ -23,12 +22,6 @@ const Checkout = async ({ params: { id } }: { params: { id: string } }) => {
 
   return (
     <section className="flex flex-col gap-12 p-20 text-white">
-      <div className="flex flex-col gap-6">
-        <p className="text-2xl font-semibold">Order Confirmation</p>
-
-        <Separator className="bg-dark-border" />
-      </div>
-
       <CheckoutForm movie={movie} />
     </section>
   );
