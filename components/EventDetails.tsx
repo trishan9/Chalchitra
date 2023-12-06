@@ -65,8 +65,11 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
           <p className="text-sm font-medium text-text-secondary">Ticket Type</p>
 
           <select
-            defaultValue={ticketType}
-            onChange={(e) => setTicketType(e.target.value)}
+            defaultValue={ticketType as string}
+            onChange={(e) => {
+              setTicketType(e.target.value);
+              localStorage.setItem("ticketType", e.target.value as string);
+            }}
             required
             className="-ml-1.5 pr-2 bg-background-secondary outline-none"
           >
@@ -98,7 +101,12 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
             <button
               disabled={ticketQty == 1}
               type="button"
-              onClick={() => ticketQty > 1 && setTicketQty((prev) => prev - 1)}
+              onClick={() => {
+                if (ticketQty > 1) {
+                  setTicketQty((prev) => prev - 1);
+                  localStorage.setItem("ticketQty", `${ticketQty - 1}`);
+                }
+              }}
               className="flex items-center justify-center w-8 h-8 p-2 text-3xl text-white border rounded-md disabled:cursor-not-allowed border-dark-border bg-background-tertiary"
             >
               -
@@ -117,7 +125,12 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
             <button
               disabled={ticketQty == 10}
               type="button"
-              onClick={() => ticketQty <= 9 && setTicketQty((prev) => prev + 1)}
+              onClick={() => {
+                if (ticketQty <= 9) {
+                  setTicketQty((prev) => prev + 1);
+                  localStorage.setItem("ticketQty", `${ticketQty + 1}`);
+                }
+              }}
               className="flex items-center justify-center w-8 h-8 p-2 text-2xl text-white border rounded-md disabled:cursor-not-allowed border-dark-border bg-brand-primary"
             >
               +

@@ -64,6 +64,7 @@ const Checkout = ({ movie }: { movie: IMovies }) => {
     //@ts-expect-error
     setTicketDetails(data);
     setShowInvoice(true);
+    localStorage.clear();
   }
 
   return (

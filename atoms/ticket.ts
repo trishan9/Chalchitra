@@ -1,5 +1,9 @@
-import { IMovies } from "@/app/page";
+"use client";
+
 import { atom } from "recoil";
+
+const localStorageExists =
+  typeof window !== "undefined" ? window.localStorage : null;
 
 export interface ITicketDetails {
   movie: {
@@ -29,12 +33,18 @@ export interface ITicketDetails {
 
 export const ticketQtyAtom = atom({
   key: "ticketQtyAtom",
-  default: 1,
+  default:
+    localStorageExists && localStorage.getItem("ticketQty")
+      ? Number(localStorage.getItem("ticketQty"))
+      : 1,
 });
 
 export const ticketTypeAtom = atom({
   key: "ticketTypeAtom",
-  default: "normal",
+  default:
+    localStorageExists && localStorage.getItem("ticketType")
+      ? localStorage.getItem("ticketType")
+      : "normal",
 });
 
 export const selectedMovieAtom = atom({
