@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import MovieCard from "@/components/MovieCard";
 import Slider from "@/components/Slider";
+import { IMovies } from "@/interfaces/movies";
 
 const API_URL = process.env.API_URL;
 
@@ -9,20 +10,6 @@ const getMovies = async () => {
   const result = await response.json();
   return result;
 };
-
-export interface IMovies {
-  _id: string;
-  title: string;
-  type: string;
-  released: string;
-  duration: string;
-  genre: string;
-  director: string;
-  cast: string;
-  poster: string;
-  ticketPriceNormal: string;
-  ticketPriceVip: string;
-}
 
 export const metadata: Metadata = {
   title: "Chalchitra",

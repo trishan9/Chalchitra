@@ -2,7 +2,7 @@
 
 import { Inter } from "next/font/google";
 import { RecoilRoot } from "recoil";
-import "./globals.css";
+import "@/styles/globals.css";
 import NavBar from "@/components/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
