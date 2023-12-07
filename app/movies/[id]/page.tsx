@@ -1,13 +1,13 @@
-import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 import MovieCard from "@/components/MovieCard";
 import EventDetails from "@/components/EventDetails";
+import { Metadata } from "next";
 
 const API_URL = process.env.API_URL;
 
-type Props = {
-  params: { id: string };
+export const metadata: Metadata = {
+  title: "Event Details",
 };
 
 const getMovie = async (id: string) => {
@@ -15,18 +15,6 @@ const getMovie = async (id: string) => {
   const result = await response.json();
   return result;
 };
-
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const id = params.id;
-  const movie = await getMovie(id);
-
-  return {
-    title: movie.title,
-  };
-}
 
 const Movie = async ({ params: { id } }: { params: { id: string } }) => {
   const movie = await getMovie(id);

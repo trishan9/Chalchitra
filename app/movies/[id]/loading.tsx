@@ -1,5 +1,7 @@
+import Spinner from "@/components/common/Spinner";
+
 const Loading = () => {
-  return <p className="p-24 text-white">Loading...</p>;
+  return <Spinner />;
 };
 
 export default Loading;
