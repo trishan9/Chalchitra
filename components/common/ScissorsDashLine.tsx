@@ -7,6 +7,7 @@ const ScissorsDashLine = () => {
       <ScissorsIcon className="w-24 text-black" />
 
       <Image
+        className="-ml-10"
         width={200}
         height={200}
         src="https://static.thenounproject.com/png/1729059-200.png"

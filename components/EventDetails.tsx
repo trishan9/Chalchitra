@@ -33,7 +33,7 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
   return (
     <form
       onSubmit={(e) => handleSubmit(e)}
-      className="w-[520px] border-dark-border p-6 flex gap-6 flex-col bg-background-secondary border rounded-md"
+      className="sm:w-[520px] w-full border-dark-border p-6 flex gap-6 flex-col bg-background-secondary border rounded-md"
     >
       <p className="text-2xl font-semibold">Event Details</p>
 
@@ -85,7 +85,7 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
       <div>
         <p className="text-2xl font-semibold ">Select Tickets</p>
 
-        <div className="flex items-center justify-between p-4 mt-2">
+        <div className="flex items-center justify-between mt-2 sm:p-4">
           <div className="flex flex-col gap-2">
             <p className="text-text-secondary">Price per ticket</p>
 

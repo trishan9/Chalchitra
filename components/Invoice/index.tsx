@@ -8,7 +8,8 @@ import { usePDF } from "react-to-pdf";
 import { useRecoilState } from "recoil";
 import { TicketIcon } from "lucide-react";
 import { ticketDetailsAtom } from "@/atoms/ticket";
-import ScissorsDashLine from "./common/ScissorsDashLine";
+import ScissorsDashLine from "../common/ScissorsDashLine";
+import InvoiceTable from "./Table";
 
 const Invoice = () => {
   const [ticketDetails] = useRecoilState(ticketDetailsAtom);
@@ -17,9 +18,9 @@ const Invoice = () => {
   return (
     <div className="flex flex-col items-center w-full">
       {ticketDetails ? (
-        <div className="pb-6 bg-secondary w-[850px] flex flex-col justify-center items-center">
+        <div className="pb-6 bg-secondary w-full sm:w-[850px] flex flex-col justify-center items-center">
           <div
-            className=" min-h-[29.7cm] w-[850px] overflow-hidden"
+            className=" min-h-[29.7cm] w-full sm:w-[850px] overflow-hidden"
             ref={targetRef}
           >
             <div className="z-10 w-full px-6 py-6 text-xl font-semibold text-white bg-brand-primary">
@@ -53,48 +54,7 @@ const Invoice = () => {
                 </div>
               </div>
 
-              <div className="w-full mt-6 text-base border rounded-md border-border">
-                <div className="flex items-center justify-between w-full gap-4">
-                  <div className="flex items-center justify-between w-full gap-2 bg-[#F7F8F9] py-2 px-3 text-text-primary font-semibold">
-                    <p className="w-[14.2%]">#</p>
-
-                    <p className="w-[14.2%]">Event Detail</p>
-
-                    <p className="w-[14.2%]">Event Type</p>
-
-                    <p className="w-[14.2%]">Ticket</p>
-
-                    <p className="w-[14.2%]">Unit Price</p>
-
-                    <p className="w-[14.2%]">Discount</p>
-
-                    <p className="w-[14.2%]">Total</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between w-full gap-4 px-3 py-6 text-base text-black bg-white border-t border-b border-border">
-                  <p className="w-[14.2%]">1</p>
-                  <p className="w-[14.2%] truncate">
-                    {ticketDetails?.movie?.movie}
-                  </p>
-
-                  <p className="w-[14.2%] truncate">Movie</p>
-                  <p className="w-[14.2%] truncate">
-                    X{ticketDetails?.movie?.ticketQty}
-                  </p>
-                  <p className="w-[14.2%] truncate">
-                    {ticketDetails?.movie?.unitPrice}
-                  </p>
-                  <p className="w-[14.2%] truncate">0</p>
-                  <p className="w-[14.2%] truncate">
-                    {ticketDetails?.movie?.total}
-                  </p>
-                </div>
-
-                <p className="w-full p-8 text-2xl font-semibold text-right text-black bg-white">
-                  Invoice Total: NRS. {ticketDetails?.movie?.total}
-                </p>
-              </div>
+              <InvoiceTable movieDetails={ticketDetails.movie} />
 
               {ticketDetails &&
                 ticketDetails.tickets &&
@@ -142,7 +102,7 @@ const Invoice = () => {
           </div>
 
           <button
-            className="w-[800px] p-3 font-semibold text-white rounded-sm bg-brand-primary"
+            className="sm:w-[800px] w-1/2 p-3 font-semibold text-white rounded-sm bg-brand-primary"
             onClick={() => toPDF()}
           >
             Download

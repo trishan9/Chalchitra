@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <nav className="sticky top-0 z-10 flex items-center justify-between w-full px-24 py-6 text-white bg-background-secondary">
+    <nav className="sticky top-0 left-0 z-10 flex items-center justify-between w-full px-6 py-6 text-white sm:px-24 bg-background-secondary">
       <div className="flex items-center gap-20">
         <Link href="/" className="flex items-center gap-3 cursor-pointer">
           <h1 className="text-2xl font-semibold text-brand-primary">
@@ -10,7 +10,7 @@ const NavBar = () => {
           </h1>
         </Link>
 
-        <ul className="flex gap-8 font-medium">
+        <ul className="hidden gap-8 font-medium sm:flex">
           <li className="cursor-pointer">Home</li>
 
           <li className="cursor-pointer">Concerts</li>

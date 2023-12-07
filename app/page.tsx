@@ -33,10 +33,10 @@ export default async function Home() {
   const movies = await getMovies();
 
   return (
-    <main className="w-full px-24">
+    <main className="w-full sm:px-24">
       <Slider />
 
-      <section className="grid items-center justify-center w-full grid-cols-4 text-white gap-14 mt-14 pb-14">
+      <section className="grid items-center justify-center w-full grid-cols-1 px-6 text-white sm:grid-cols-4 gap-14 mt-14 pb-14 sm:px-0">
         {movies.map((movie: IMovies) => (
           <MovieCard movie={movie} key={movie._id} isDetailed={false} />
         ))}

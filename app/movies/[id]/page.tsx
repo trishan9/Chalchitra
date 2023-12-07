@@ -36,13 +36,13 @@ const Movie = async ({ params: { id } }: { params: { id: string } }) => {
   }
 
   return (
-    <section className="flex flex-col gap-6 p-12">
+    <section className="flex flex-col gap-6 p-6 sm:p-12">
       <Link href="/">
         <ArrowLeftIcon className="w-8 text-white cursor-pointer" />
       </Link>
 
-      <div className="flex items-start justify-between text-white">
-        <div className="w-1/3">
+      <div className="flex flex-col items-start justify-between gap-8 text-white sm:gap-0 sm:flex-row">
+        <div className="sm:w-1/3">
           <MovieCard movie={movie} isDetailed={true} />
         </div>
 

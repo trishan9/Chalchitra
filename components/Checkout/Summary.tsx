@@ -18,7 +18,7 @@ const CheckoutSummary = ({ movie }: { movie: IMovies }) => {
   );
 
   return (
-    <div className="w-[35%] p-7 border rounded-md flex flex-col gap-4 bg-background-secondary border-dark-border">
+    <div className="sm:w-[35%] w-full p-7 border rounded-md flex flex-col gap-4 bg-background-secondary border-dark-border">
       <p className="text-2xl font-semibold">Checkout Summary</p>
 
       <Separator className="bg-dark-border" />

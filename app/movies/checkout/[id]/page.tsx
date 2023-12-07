@@ -21,7 +21,7 @@ const Checkout = async ({ params: { id } }: { params: { id: string } }) => {
   }
 
   return (
-    <section className="flex flex-col gap-12 p-20 text-white">
+    <section className="flex flex-col gap-12 p-6 text-white sm:p-20">
       <CheckoutForm movie={movie} />
     </section>
   );

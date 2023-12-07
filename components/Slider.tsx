@@ -56,10 +56,10 @@ const Slider = () => {
       }}
       navigation={true}
       modules={[Autoplay, Pagination, Navigation]}
-      className="mt-12 border rounded-lg mySwiper border-dark-border"
+      className="border rounded-lg sm:mt-12 mySwiper border-dark-border"
     >
       {images.map((image) => (
-        <SwiperSlide className="w-32 h-64" key={image.movie}>
+        <SwiperSlide className="w-full h-64 sm:w-32" key={image.movie}>
           <Image
             width={800}
             height={800}

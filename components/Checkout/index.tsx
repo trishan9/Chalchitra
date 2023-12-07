@@ -82,7 +82,7 @@ const Checkout = ({ movie }: { movie: IMovies }) => {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex items-start justify-between gap-8"
+              className="flex flex-col items-start justify-between gap-8 sm:flex-row"
             >
               <CheckoutForm form={form} />
 
