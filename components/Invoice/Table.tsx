@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ITicketDetails } from "@/atoms/ticket";
+import { ITicketDetails } from "@/interfaces/tickets";
 
 const InvoiceTable = ({
   movieDetails,
