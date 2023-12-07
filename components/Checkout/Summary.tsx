@@ -6,7 +6,7 @@ import {
   ticketQtyAtom,
   ticketTypeAtom,
 } from "@/atoms/ticket";
-import { IMovies } from "@/app/page";
+import { IMovies } from "@/interfaces/movies";
 import { Separator } from "../ui/separator";
 
 const CheckoutSummary = ({ movie }: { movie: IMovies }) => {

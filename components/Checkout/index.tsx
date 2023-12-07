@@ -10,7 +10,7 @@ import {
   ticketQtyAtom,
   ticketTypeAtom,
 } from "@/atoms/ticket";
-import { IMovies } from "@/app/page";
+import { IMovies } from "@/interfaces/movies";
 import { Form } from "@/components/ui/form";
 import formSchema from "./formSchema";
 import CheckoutSummary from "./Summary";

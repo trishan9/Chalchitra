@@ -11,7 +11,7 @@ import {
   ticketQtyAtom,
   ticketTypeAtom,
 } from "@/atoms/ticket";
-import { IMovies } from "@/app/page";
+import { IMovies } from "@/interfaces/movies";
 import { Separator } from "@/components/ui/separator";
 
 const EventDetails = ({ movie }: { movie: IMovies }) => {

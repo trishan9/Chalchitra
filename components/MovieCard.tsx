@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { IMovies } from "@/app/page";
+import { IMovies } from "@/interfaces/movies";
 
 const MovieCard = ({
   movie,
