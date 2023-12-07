@@ -61,6 +61,8 @@ const Slider = () => {
       {images.map((image) => (
         <SwiperSlide className="w-full h-64 sm:w-32" key={image.movie}>
           <Image
+            placeholder="blur"
+            blurDataURL={image.src}
             width={800}
             height={800}
             src={image.src}

@@ -14,6 +14,16 @@ import {
 import { IMovies } from "@/interfaces/movies";
 import { Separator } from "@/components/ui/separator";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 const EventDetails = ({ movie }: { movie: IMovies }) => {
   const [, setSelectedMovie] = useRecoilState(selectedMovieAtom);
   const [ticketQty, setTicketQty] = useRecoilState(ticketQtyAtom);
@@ -56,7 +66,7 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
 
       <Separator className="bg-dark-border" />
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-start gap-3">
         <div className="flex items-center justify-center p-3 rounded-full bg-background-tertiary">
           <Ticket className="w-7" />
         </div>
@@ -71,12 +81,28 @@ const EventDetails = ({ movie }: { movie: IMovies }) => {
               localStorage.setItem("ticketType", e.target.value as string);
             }}
             required
-            className="-ml-1.5 pr-2 bg-background-secondary outline-none"
+            className="-ml-1.5 pr-2 bg-background-secondary outline-none font-semibold"
           >
             <option value="normal">Chalchitra Normal</option>
 
             <option value="vip">Chalchitra VIP</option>
           </select>
+
+          <Dialog>
+            <DialogTrigger asChild>
+              <p className="font-semibold cursor-pointer text-brand-primary">
+                View Movie Hall on Map
+              </p>
+            </DialogTrigger>
+            <DialogContent className="">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.391943789416!2d85.30127957622595!3d27.674278526947866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19fafe346f21%3A0x25be405bae296c9f!2sLanceme%20Up!5e0!3m2!1sen!2snp!4v1701945827218!5m2!1sen!2snp"
+                height="300"
+                loading="eager"
+                className="w-full my-4"
+              ></iframe>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 

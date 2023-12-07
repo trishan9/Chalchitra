@@ -14,6 +14,8 @@ const MovieCard = ({
       <div className="relative w-full">
         <Link href={`/movies/${movie._id}`}>
           <Image
+            placeholder="blur"
+            blurDataURL={movie.poster}
             width={800}
             height={800}
             src={movie.poster}
